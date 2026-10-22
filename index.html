@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WSET Quiz</title>
+  <meta name="description" content="Bilingual (EN/DE) multiple-choice quiz for WSET Level 1 and 2 exam prep.">
+  <meta name="theme-color" content="#7b1e3a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🍷 WSET Quiz</h1>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en">EN</button>
+      <button data-lang="de">DE</button>
+    </div>
+  </header>
+
+  <main>
+    <p id="error" class="error" hidden></p>
+
+    <section id="setup" hidden>
+      <h2 data-i18n="setupTitle"></h2>
+
+      <fieldset>
+        <legend data-i18n="level"></legend>
+        <label><input type="radio" name="level" value="all" checked> <span data-i18n="levelAll"></span></label>
+        <label><input type="radio" name="level" value="1"> <span data-i18n="level1"></span></label>
+        <label><input type="radio" name="level" value="2"> <span data-i18n="level2"></span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="country"></legend>
+        <select id="country"></select>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="topics"></legend>
+        <div id="topics" class="chips"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="count"></legend>
+        <select id="count">
+          <option value="10">10</option>
+          <option value="20" selected>20</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+          <option value="all" data-i18n="countAll"></option>
+        </select>
+      </fieldset>
+
+      <p id="available" class="muted"></p>
+      <button id="start" class="primary" data-i18n="start"></button>
+    </section>
+
+    <section id="quiz" hidden>
+      <div class="progress"><div id="progress-bar"></div></div>
+      <div class="meta">
+        <span id="counter"></span>
+        <span id="badge" class="badge"></span>
+      </div>
+      <h2 id="question"></h2>
+      <div id="options" class="options"></div>
+      <div id="feedback" class="feedback" hidden></div>
+      <div class="actions">
+        <button id="quit" class="link" data-i18n="quit"></button>
+        <button id="next" class="primary" hidden></button>
+      </div>
+    </section>
+
+    <section id="result" hidden>
+      <h2 data-i18n="resultTitle"></h2>
+      <p id="score" class="score"></p>
+      <p id="verdict"></p>
+      <div id="missed"></div>
+      <div class="actions">
+        <button id="retry" class="secondary" data-i18n="retry"></button>
+        <button id="restart" class="primary" data-i18n="restart"></button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

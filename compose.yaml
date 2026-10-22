@@ -1,0 +1,8 @@
+services:
+  wset-quiz:
+    build: .
+    image: wset-quiz:latest
+    container_name: wset-quiz
+    ports:
+      - "8790:80"
+    restart: unless-stopped

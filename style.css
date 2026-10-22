@@ -1,0 +1,127 @@
+:root {
+  --bg: #faf7f5;
+  --card: #ffffff;
+  --text: #2b1d22;
+  --muted: #7a6a70;
+  --border: #e6dcdf;
+  --accent: #7b1e3a;
+  --accent-soft: #f3e6ea;
+  --ok: #2e7d4f;
+  --ok-soft: #e3f3ea;
+  --bad: #b3261e;
+  --bad-soft: #fbe5e3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1416;
+    --card: #241c1f;
+    --text: #f1e9ec;
+    --muted: #a8979d;
+    --border: #3a2e33;
+    --accent: #d16a8a;
+    --accent-soft: #3a2530;
+    --ok: #6cc592;
+    --ok-soft: #1f3328;
+    --bad: #f08a80;
+    --bad-soft: #3d2220;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+h1 { font-size: 1.3rem; margin: 0; }
+h2 { font-size: 1.2rem; line-height: 1.4; }
+
+main {
+  max-width: 720px;
+  margin: 0 auto 48px;
+  padding: 24px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+@media (max-width: 760px) {
+  main { margin: 0 16px 32px; }
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding: 8px 14px;
+}
+
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.secondary { background: var(--accent-soft); border-color: var(--accent-soft); }
+button.link { border: none; background: none; color: var(--muted); padding: 8px 0; }
+button:disabled { cursor: default; }
+
+.lang button { padding: 4px 10px; }
+.lang button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+fieldset { border: none; padding: 0; margin: 0 0 20px; }
+legend { font-weight: 600; margin-bottom: 8px; }
+fieldset > label { margin-right: 16px; white-space: nowrap; }
+select { font: inherit; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips label {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px;
+  font-size: 0.9rem; cursor: pointer;
+}
+.chips label:has(input:checked) { background: var(--accent-soft); border-color: var(--accent); }
+
+.muted { color: var(--muted); }
+.error { color: var(--bad); background: var(--bad-soft); padding: 12px; border-radius: 8px; }
+
+.progress { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+#progress-bar { height: 100%; width: 0; background: var(--accent); transition: width 0.2s; }
+
+.meta { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; color: var(--muted); font-size: 0.9rem; }
+.badge { background: var(--accent-soft); color: var(--accent); padding: 2px 10px; border-radius: 999px; font-weight: 600; }
+
+.options { display: grid; gap: 10px; }
+.options button {
+  text-align: left; padding: 12px 14px; display: flex; gap: 10px; align-items: baseline;
+}
+.options button:not(:disabled):hover { border-color: var(--accent); }
+.options .key { color: var(--muted); font-size: 0.85rem; min-width: 1em; }
+.options button.correct { background: var(--ok-soft); border-color: var(--ok); }
+.options button.wrong { background: var(--bad-soft); border-color: var(--bad); }
+
+.feedback { margin-top: 16px; padding: 12px 14px; border-radius: 8px; border-left: 4px solid; }
+.feedback.ok { background: var(--ok-soft); border-color: var(--ok); }
+.feedback.bad { background: var(--bad-soft); border-color: var(--bad); }
+
+.actions { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; gap: 12px; }
+
+.score { font-size: 2rem; font-weight: 700; margin: 0; }
+.pass { color: var(--ok); font-weight: 600; }
+.fail { color: var(--bad); font-weight: 600; }
+
+.missed-item { border-top: 1px solid var(--border); padding: 12px 0; }
+.missed-item p { margin: 4px 0; }
+.missed-item .yours { color: var(--bad); }
+.missed-item .right { color: var(--ok); }
