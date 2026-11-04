@@ -1,6 +1,6 @@
 # WSET Quiz 🍷
 
-A bilingual (EN/DE) multiple-choice quiz for **WSET Level 1 and Level 2** exam prep, with 400+ questions on grape varieties, regions, labelling, geography, winemaking, tasting and food pairing.
+A bilingual (EN/DE) multiple-choice quiz for **WSET Level 1 and Level 2** exam prep, with 700 questions on regions, wine styles, grape varieties, labelling, geography, vineyard and winemaking, sparkling, sweet and fortified wines, tasting, food pairing and service.
 
 It's plain HTML, CSS and JavaScript: no build step, no backend, no database. Each quiz draws a random set of questions from `questions.json`.
 
@@ -79,7 +79,7 @@ Each entry in `questions.json` is one question, in both languages:
 ```
 
 - `answer` is the index of the correct option and applies to both languages, so `de.options` must be in the same order as `en.options`. The app shuffles the options when it shows them.
-- `topic` is one of: Wine Types, Grape Varieties, Viticulture, Winemaking, Tasting, Food & Wine, Service & Storage, Regions, Geography, Sparkling, Sweet & Fortified, Labelling. A new topic also needs its German name in `TOPICS_DE` in `app.js`.
+- `topic` is one of: Wine Types, Wine Styles, Grape Varieties, Viticulture, Winemaking, Tasting, Food & Wine, Service & Storage, Regions, Geography, Sparkling, Sweet & Fortified, Labelling. A new topic also needs its German name in `TOPICS_DE` in `app.js`.
 - `countries` is optional. It lists the country (or countries) the question is about, and drives the country filter. Allowed names are in `COUNTRIES` in `app.js` and `validate.py`.
 
 Check the file after you edit it (CI runs the same check):

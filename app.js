@@ -67,6 +67,7 @@ const I18N = {
 
 const TOPICS_DE = {
   'Wine Types': 'Weinarten',
+  'Wine Styles': 'Weinstile',
   'Grape Varieties': 'Rebsorten',
   'Viticulture': 'Weinbau',
   'Winemaking': 'Weinbereitung',
