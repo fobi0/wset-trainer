@@ -4,5 +4,6 @@ services:
     image: wset-quiz:latest
     container_name: wset-quiz
     ports:
-      - "8790:80"
+      # Localhost only: not reachable from other devices on the network.
+      - "127.0.0.1:8790:80"
     restart: unless-stopped

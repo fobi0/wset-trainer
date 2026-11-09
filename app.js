@@ -4,6 +4,8 @@ const PASS_MARK = 0.55; // WSET Level 1 and 2 pass mark
 
 const I18N = {
   en: {
+    navQuiz: 'Quiz',
+    navLibrary: 'Library',
     setupTitle: 'Set up your quiz',
     level: 'Level',
     levelAll: 'Level 1 + 2',
@@ -34,6 +36,8 @@ const I18N = {
     loadError: 'Could not load questions.json. Serve this folder over HTTP (see README).',
   },
   de: {
+    navQuiz: 'Quiz',
+    navLibrary: 'Bibliothek',
     setupTitle: 'Quiz einrichten',
     level: 'Stufe',
     levelAll: 'Level 1 + 2',
@@ -81,23 +85,7 @@ const TOPICS_DE = {
   'Labelling': 'Etikettierung',
 };
 
-// Display order for the country filter: Old World first, then New World.
-const COUNTRIES = {
-  'France': 'Frankreich',
-  'Italy': 'Italien',
-  'Spain': 'Spanien',
-  'Portugal': 'Portugal',
-  'Germany': 'Deutschland',
-  'Austria': 'Österreich',
-  'Hungary': 'Ungarn',
-  'USA': 'USA',
-  'Canada': 'Kanada',
-  'Chile': 'Chile',
-  'Argentina': 'Argentinien',
-  'Australia': 'Australien',
-  'New Zealand': 'Neuseeland',
-  'South Africa': 'Südafrika',
-};
+// COUNTRIES, countryLabel, loadLang and saveLang come from common.js.
 
 const state = {
   lang: loadLang(),
@@ -114,17 +102,9 @@ const t = (key, ...args) => {
 };
 const topicLabel = topic => (state.lang === 'de' ? TOPICS_DE[topic] || topic : topic);
 
-function loadLang() {
-  try {
-    const saved = localStorage.getItem('wset-quiz-lang');
-    if (saved === 'en' || saved === 'de') return saved;
-  } catch {}
-  return navigator.language.startsWith('de') ? 'de' : 'en';
-}
-
 function setLang(lang) {
   state.lang = lang;
-  try { localStorage.setItem('wset-quiz-lang', lang); } catch {}
+  saveLang(lang);
   render();
 }
 
@@ -176,7 +156,7 @@ function renderCountries() {
     option('all', t('countryAll')),
     ...Object.keys(COUNTRIES)
       .filter(c => counts[c])
-      .map(c => option(c, `${state.lang === 'de' ? COUNTRIES[c] : c} (${counts[c]})`)),
+      .map(c => option(c, `${countryLabel(c, state.lang)} (${counts[c]})`)),
   );
   select.value = current;
 }
@@ -388,8 +368,3 @@ async function init() {
 }
 
 init();
-
-// Offline support and "Add to home screen" (see sw.js).
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
-}

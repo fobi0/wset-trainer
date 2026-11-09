@@ -2,7 +2,7 @@
 # Fully qualified so Podman resolves it without a registry prompt.
 FROM docker.io/library/nginx:1.27-alpine
 
-COPY index.html app.js style.css questions.json manifest.webmanifest sw.js /usr/share/nginx/html/
+COPY index.html library.html common.js app.js library.js style.css questions.json library.json manifest.webmanifest sw.js /usr/share/nginx/html/
 COPY icons /usr/share/nginx/html/icons
 
 EXPOSE 80

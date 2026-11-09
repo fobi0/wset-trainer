@@ -3,13 +3,17 @@
 // Network-first service worker: always try to load the latest files (so new
 // questions show up right away) and fall back to the cached copy when offline.
 // Bump CACHE when the list of ASSETS changes, so old caches get cleaned up.
-const CACHE = 'wset-quiz-v1';
+const CACHE = 'wset-quiz-v2';
 const ASSETS = [
   './',
   'index.html',
+  'library.html',
+  'common.js',
   'app.js',
+  'library.js',
   'style.css',
   'questions.json',
+  'library.json',
   'manifest.webmanifest',
   'icons/icon-192.png',
   'icons/icon-512.png',
@@ -39,7 +43,9 @@ self.addEventListener('fetch', event => {
 
 async function networkFirst(req) {
   const cache = await caches.open(CACHE);
-  const network = fetch(req).then(res => {
+  // 'no-cache' revalidates with the server instead of trusting the browser's HTTP cache,
+  // so an update never mixes old and new files (e.g. a new app.js with an old index.html).
+  const network = fetch(req.url, { cache: 'no-cache', credentials: 'same-origin' }).then(res => {
     if (res.ok) cache.put(req, res.clone());
     return res;
   });

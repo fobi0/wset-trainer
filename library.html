@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>WSET Library</title>
+  <meta name="description" content="Grape and wine profiles for the WSET Level 2 Award in Wines (EN/DE).">
+  <meta name="theme-color" content="#7b1e3a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🍷 WSET</h1>
+    <nav class="tabs" aria-label="Sections">
+      <a href="index.html" data-i18n="navQuiz"></a>
+      <a href="library.html" aria-current="page" data-i18n="navLibrary"></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en">EN</button>
+      <button data-lang="de">DE</button>
+    </div>
+  </header>
+
+  <main class="library">
+    <p id="error" class="error" hidden></p>
+
+    <section id="overview" hidden>
+      <h2 data-i18n="title"></h2>
+      <p class="muted" data-i18n="intro"></p>
+
+      <div class="toolbar">
+        <input id="search" type="search" autocomplete="off" data-i18n-placeholder="search">
+        <div id="kind-filter" class="chips" role="group"></div>
+      </div>
+
+      <div class="legend" aria-hidden="true">
+        <span class="legend-item"><span class="kind-dot black"></span><span data-i18n="kind_black"></span></span>
+        <span class="legend-item"><span class="kind-dot white"></span><span data-i18n="kind_white"></span></span>
+        <span class="legend-item"><span class="kind-dot sparkling"></span><span data-i18n="kind_sparkling"></span></span>
+        <span class="legend-item"><span class="kind-dot fortified"></span><span data-i18n="kind_fortified"></span></span>
+      </div>
+
+      <div id="groups"></div>
+      <p id="empty" class="muted" hidden data-i18n="noMatch"></p>
+    </section>
+
+    <article id="detail" hidden></article>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="library.js"></script>
+</body>
+</html>

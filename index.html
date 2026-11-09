@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
   <title>WSET Quiz</title>
   <meta name="description" content="Bilingual (EN/DE) multiple-choice quiz for WSET Level 1 and 2 exam prep.">
   <meta name="theme-color" content="#7b1e3a">
@@ -13,7 +15,11 @@
 </head>
 <body>
   <header>
-    <h1>🍷 WSET Quiz</h1>
+    <h1>🍷 WSET</h1>
+    <nav class="tabs" aria-label="Sections">
+      <a href="index.html" aria-current="page" data-i18n="navQuiz"></a>
+      <a href="library.html" data-i18n="navLibrary"></a>
+    </nav>
     <div class="lang" role="group" aria-label="Language">
       <button data-lang="en">EN</button>
       <button data-lang="de">DE</button>
@@ -85,6 +91,7 @@
     </section>
   </main>
 
+  <script src="common.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
