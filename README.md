@@ -1,6 +1,8 @@
 # WSET Quiz 🍷
 
-A bilingual (EN/DE) multiple-choice quiz for **WSET Level 1 and Level 2** exam prep, with 700 questions on regions, wine styles, grape varieties, labelling, geography, vineyard and winemaking, sparkling, sweet and fortified wines, tasting, food pairing and service.
+A bilingual (EN/DE) multiple-choice quiz for **WSET Level 1 and Level 2** exam prep, with 503 questions on regions, wine styles, grape varieties, labelling, vineyard and winemaking, sparkling, sweet and fortified wines, food pairing and service.
+
+The question bank follows the official [WSET Level 2 Award in Wines specification](https://www.wsetglobal.com/media/13167/wset_l2wines_specification_en_may2023_issue2.pdf) (Issue 2, 2023). Questions on grapes, regions or terms outside that syllabus have been moved to `archive/questions-beyond-l2.json` (with the reason for each). The app doesn't load that file.
 
 It's plain HTML, CSS and JavaScript: no build step, no backend, no database. Each quiz draws a random set of questions from `questions.json`.
 
@@ -93,7 +95,8 @@ python3 validate.py
 | File | Purpose |
 |------|---------|
 | `index.html`, `style.css`, `app.js` | The app |
-| `questions.json` | Question bank (EN + DE) |
+| `questions.json` | Question bank (EN + DE), within the WSET L2 syllabus |
+| `archive/questions-beyond-l2.json` | Questions outside the L2 syllabus, each with an `outOfScope` reason (not loaded by the app; move an entry back to `questions.json` to restore it) |
 | `manifest.webmanifest`, `sw.js`, `icons/` | PWA: install metadata, offline cache (network-first), app icons |
 | `tools/make_icons.py` | Regenerates the icons (pure Python, no dependencies) |
 | `validate.py` | Question file checks (used by CI) |
