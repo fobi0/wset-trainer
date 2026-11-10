@@ -81,6 +81,9 @@
 
 * { box-sizing: border-box; }
 
+/* The hidden attribute must always win, even over display rules like .trainer-fb { display: grid }. */
+[hidden] { display: none !important; }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -376,4 +379,57 @@ button.chip.active { background: var(--accent); border-color: var(--accent); col
   .trainer .structure.blind .scale-text { grid-column: 2; padding-top: 0; font-size: 0.8rem; }
   .trainer .structure.blind th, .trainer .structure.blind td { border-bottom: none; }
   .trainer .structure.blind tr { border-bottom: 1px solid var(--border); padding: 2px 0; }
+}
+
+/* Trainer: more modes */
+.mode.wide { grid-column: 1 / -1; }
+
+/* Build the profile: tappable 5-step pickers */
+.picker { max-width: 260px; gap: 4px; }
+.picker .seg {
+  height: 22px; padding: 0; border: 1px solid var(--border); border-radius: 5px;
+  background: var(--m-off); cursor: pointer;
+}
+.picker .seg:hover { border-color: var(--text); }
+.picker.meter-sweetness .seg.on { background: var(--m-sweetness); }
+.picker.meter-acidity .seg.on { background: var(--m-acidity); }
+.picker.meter-tannin .seg.on { background: var(--m-tannin); }
+.picker.meter-alcohol .seg.on { background: var(--m-alcohol); }
+.picker.meter-body .seg.on { background: var(--m-body); }
+.picker.meter-colour .seg.on { background: var(--kind, var(--m-colour)); }
+.meter .seg.pick { outline: 2px solid var(--text); outline-offset: 1px; }
+.build-head { margin: 4px 0 2px; font-size: 0.85rem; }
+.badge-kind { font-weight: 700; color: var(--kind); }
+.verdict { font-weight: 700; white-space: nowrap; }
+.verdict.hit { color: var(--ok); }
+.verdict.near { color: var(--aroma-secondary); }
+.verdict.miss { color: var(--bad); }
+.aroma-instruction { margin: 12px 0 6px; font-weight: 600; font-size: 0.92rem; }
+.pick-chip { cursor: pointer; }
+button.pick-chip.active { background: var(--aroma-primary-soft); border-color: var(--aroma-primary); color: var(--aroma-primary); font-weight: 600; }
+.pick-chip.hit { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); font-weight: 600; }
+.pick-chip.miss { background: var(--bad-soft); border-color: var(--bad); color: var(--bad); text-decoration: line-through; }
+.pick-chip.missed { border: 2px dashed var(--ok); color: var(--ok); }
+.pick-chip.idle { opacity: 0.55; }
+.options .check { justify-self: end; padding: 10px 22px; }
+.form-error { color: var(--bad); font-size: 0.85rem; margin: 0; }
+
+/* Aroma sorting */
+.clue-card {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  padding: 22px 12px; margin-bottom: 14px;
+  border: 1px dashed var(--border); border-radius: 12px; background: var(--bg);
+}
+.clue { font-size: 1.25rem; font-weight: 700; padding: 6px 18px; border-radius: 999px; background: var(--card); border: 1px solid var(--border); }
+.options .layer-option { border-left: 4px solid var(--layer); }
+.layer-option.aroma-primary { --layer: var(--aroma-primary); }
+.layer-option.aroma-secondary { --layer: var(--aroma-secondary); }
+.layer-option.aroma-tertiary { --layer: var(--aroma-tertiary); }
+
+@media (max-width: 520px) {
+  .trainer .structure.build tr { display: grid; grid-template-columns: 80px 1fr; }
+  .trainer .structure.build .scale-text { grid-column: 2; padding-top: 0; font-size: 0.8rem; }
+  .trainer .structure.build th, .trainer .structure.build td { border-bottom: none; }
+  .trainer .structure.build tr { border-bottom: 1px solid var(--border); padding: 2px 0; }
+  .picker { max-width: none; }
 }
