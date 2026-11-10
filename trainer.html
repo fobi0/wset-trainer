@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>WSET Training</title>
+  <meta name="description" content="Train to tell WSET Level 2 grape varieties apart by their structure and aromas (EN/DE).">
+  <meta name="theme-color" content="#7b1e3a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🍷 WSET</h1>
+    <nav class="tabs" aria-label="Sections">
+      <a href="index.html" data-i18n="navQuiz"></a>
+      <a href="library.html" data-i18n="navLibrary"></a>
+      <a href="trainer.html" aria-current="page" data-i18n="navTraining"></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en">EN</button>
+      <button data-lang="de">DE</button>
+    </div>
+  </header>
+
+  <main class="trainer">
+    <p id="error" class="error" hidden></p>
+
+    <section id="setup" hidden>
+      <h2 data-i18n="setupTitle"></h2>
+      <p class="muted" data-i18n="setupIntro"></p>
+
+      <div id="modes" class="modes" role="group"></div>
+
+      <fieldset id="level-field">
+        <legend data-i18n="level"></legend>
+        <div id="levels" class="chips" role="group"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="pool"></legend>
+        <div id="pools" class="chips" role="group"></div>
+      </fieldset>
+
+      <p id="deck-info" class="deck-info"></p>
+      <div class="actions">
+        <button id="reset" class="link" type="button" data-i18n="reset"></button>
+        <button id="start" class="primary" type="button" data-i18n="start"></button>
+      </div>
+    </section>
+
+    <section id="drill" hidden>
+      <div class="progress"><div id="progress-bar"></div></div>
+      <div class="meta">
+        <span id="counter"></span>
+        <span id="drill-badge" class="badge"></span>
+      </div>
+      <h2 id="prompt"></h2>
+      <div id="stage"></div>
+      <div id="options" class="options"></div>
+      <div id="feedback" class="feedback" hidden></div>
+      <div class="actions">
+        <button id="quit" class="link" type="button" data-i18n="quit"></button>
+        <button id="next" class="primary" type="button" hidden></button>
+      </div>
+    </section>
+
+    <section id="summary" hidden>
+      <h2 data-i18n="summaryTitle"></h2>
+      <p id="sum-score" class="score"></p>
+      <div id="sum-mixups"></div>
+      <p id="sum-deck" class="deck-info"></p>
+      <div class="actions">
+        <button id="settings" class="secondary" type="button" data-i18n="changeSettings"></button>
+        <button id="again" class="primary" type="button" data-i18n="again"></button>
+      </div>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="profile.js"></script>
+  <script src="trainer.js"></script>
+</body>
+</html>

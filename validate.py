@@ -66,6 +66,9 @@ for item in lib_items:
         for a in aromas:
             if a not in library["aromas"]:
                 errors.append(f"library/{iid}: aroma '{a}' has no German translation in 'aromas'")
+    sig = item.get("signature") or {}
+    if not (sig.get("en") and sig.get("de")):
+        errors.append(f"library/{iid}: signature needs EN and DE text")
     if len(item["notes"]["en"]) != len(item["notes"]["de"]) or not item["notes"]["en"]:
         errors.append(f"library/{iid}: notes must have the same number of EN and DE entries")
     for r in item["regions"]:

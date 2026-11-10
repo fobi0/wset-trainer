@@ -312,3 +312,68 @@ button.chip.active { background: var(--accent); border-color: var(--accent); col
   .structure th, .structure td { border-bottom: none; }
   .structure tr { border-bottom: 1px solid var(--border); padding: 4px 0; }
 }
+
+/* Library: signature line and trainer mastery ring on tiles */
+.profile-head .signature { margin: 8px 0 0; font-size: 0.92rem; }
+.tile-foot { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.ring {
+  --pct: 0;
+  width: 30px; height: 30px; border-radius: 50%; flex: none;
+  display: grid; place-items: center; font-size: 0.62rem; font-weight: 700; color: var(--text);
+  background:
+    radial-gradient(var(--card) 58%, transparent 60%),
+    conic-gradient(var(--ok) calc(var(--pct) * 1%), var(--m-off) 0);
+}
+
+/* ===================== Trainer ===================== */
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0 20px; }
+.mode {
+  display: flex; flex-direction: column; gap: 4px; text-align: left;
+  padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px;
+}
+.mode span { color: var(--muted); font-size: 0.88rem; }
+.mode.active { border: 2px solid var(--accent); background: var(--accent-soft); padding: 13px 15px; }
+.mode.active strong { color: var(--accent); }
+.deck-info { color: var(--muted); font-size: 0.9rem; background: var(--accent-soft); padding: 10px 12px; border-radius: 8px; }
+
+.badge.deck { background: var(--aroma-secondary-soft); color: var(--aroma-secondary); }
+
+.blind-card { border: 1px solid var(--border); border-left: 5px solid var(--kind); border-radius: 10px; padding: 8px 14px 12px; margin-bottom: 14px; }
+.blind-card .chips { margin-top: 8px; }
+.trainer table { width: 100%; border-collapse: collapse; }
+.trainer th, .trainer td { text-align: left; vertical-align: middle; padding: 6px 8px 6px 0; border-bottom: 1px solid var(--border); }
+.trainer tr:last-child th, .trainer tr:last-child td { border-bottom: none; }
+.trainer th { font-weight: 600; white-space: nowrap; width: 1%; padding-right: 14px; }
+
+.h2h-option .opt-name small { display: block; color: var(--muted); font-size: 0.78rem; }
+.options .h2h-option { border-left: 4px solid var(--kind); }
+.opt-name { display: flex; flex-direction: column; }
+
+.trainer-fb { display: grid; gap: 8px; }
+.trainer-fb p { margin: 0; }
+.fb-title { font-weight: 700; }
+.fb-title.ok { color: var(--ok); }
+.fb-title.bad { color: var(--bad); }
+.compare { font-size: 0.9rem; background: var(--card); border-radius: 8px; }
+.compare thead th { font-size: 0.78rem; color: var(--muted); font-weight: 600; white-space: normal; }
+.compare td { width: 40%; }
+.compare tr.differs th, .compare tr.differs td { background: var(--aroma-secondary-soft); }
+.compare tr.differs th { color: var(--aroma-secondary); box-shadow: inset 3px 0 0 var(--aroma-secondary); padding-left: 8px; }
+.compare .chips { gap: 4px; }
+.compare .chip.aroma { font-size: 0.75rem; padding: 2px 8px; }
+.giveaway { font-size: 0.92rem; }
+.deck-note { font-size: 0.85rem; color: var(--muted); }
+.deck-note.done { color: var(--ok); font-weight: 600; }
+.small { font-size: 0.8rem; }
+.name-link { color: var(--kind); font-weight: 700; text-decoration: none; }
+.name-link:hover { text-decoration: underline; }
+.mixups { padding-left: 20px; }
+.mixups li { margin: 6px 0; }
+
+@media (max-width: 520px) {
+  .modes { grid-template-columns: 1fr; }
+  .trainer .structure.blind tr { display: grid; grid-template-columns: 80px 1fr; }
+  .trainer .structure.blind .scale-text { grid-column: 2; padding-top: 0; font-size: 0.8rem; }
+  .trainer .structure.blind th, .trainer .structure.blind td { border-bottom: none; }
+  .trainer .structure.blind tr { border-bottom: 1px solid var(--border); padding: 2px 0; }
+}

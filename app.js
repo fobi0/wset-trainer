@@ -6,6 +6,7 @@ const I18N = {
   en: {
     navQuiz: 'Quiz',
     navLibrary: 'Library',
+    navTraining: 'Training',
     setupTitle: 'Set up your quiz',
     level: 'Level',
     levelAll: 'Level 1 + 2',
@@ -38,6 +39,7 @@ const I18N = {
   de: {
     navQuiz: 'Quiz',
     navLibrary: 'Bibliothek',
+    navTraining: 'Training',
     setupTitle: 'Quiz einrichten',
     level: 'Stufe',
     levelAll: 'Level 1 + 2',

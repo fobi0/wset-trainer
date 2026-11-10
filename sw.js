@@ -3,14 +3,17 @@
 // Network-first service worker: always try to load the latest files (so new
 // questions show up right away) and fall back to the cached copy when offline.
 // Bump CACHE when the list of ASSETS changes, so old caches get cleaned up.
-const CACHE = 'wset-quiz-v2';
+const CACHE = 'wset-quiz-v3';
 const ASSETS = [
   './',
   'index.html',
   'library.html',
+  'trainer.html',
   'common.js',
+  'profile.js',
   'app.js',
   'library.js',
+  'trainer.js',
   'style.css',
   'questions.json',
   'library.json',
