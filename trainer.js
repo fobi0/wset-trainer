@@ -284,7 +284,8 @@ function promoteDeck(key) {
 }
 
 function recordStat(id, ok) {
-  const s = state.progress.stats[id] || (state.progress.stats[id] = { seen: 0, correct: 0 });
+  let s = state.progress.stats[id];
+  if (!s || !Number.isFinite(s.seen) || !Number.isFinite(s.correct)) s = state.progress.stats[id] = { seen: 0, correct: 0 };
   s.seen += 1;
   if (ok) s.correct += 1;
 }
@@ -828,6 +829,7 @@ function renderSummary() {
 
 function render() {
   document.documentElement.lang = state.lang;
+  applyShared(state.lang);
   for (const btn of document.querySelectorAll('.lang button')) btn.classList.toggle('active', btn.dataset.lang === state.lang);
   for (const node of document.querySelectorAll('[data-i18n]')) node.textContent = t(node.dataset.i18n);
   if (!state.grapes.length) return;

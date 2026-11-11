@@ -3,17 +3,19 @@
 // Network-first service worker: always try to load the latest files (so new
 // questions show up right away) and fall back to the cached copy when offline.
 // Bump CACHE when the list of ASSETS changes, so old caches get cleaned up.
-const CACHE = 'wset-quiz-v3';
+const CACHE = 'wset-quiz-v5';
 const ASSETS = [
   './',
   'index.html',
   'library.html',
   'trainer.html',
+  'privacy.html',
   'common.js',
   'profile.js',
   'app.js',
   'library.js',
   'trainer.js',
+  'privacy.js',
   'style.css',
   'questions.json',
   'library.json',
@@ -26,7 +28,8 @@ const ASSETS = [
 const NETWORK_TIMEOUT_MS = 4000; // on a flaky connection, give up and use the cache
 
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));
+  // cache: 'reload' bypasses the browser's HTTP cache, so a new version never precaches stale files.
+  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS.map(url => new Request(url, { cache: 'reload' })))));
   self.skipWaiting();
 });
 

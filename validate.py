@@ -82,6 +82,11 @@ if errors:
     print("\n".join(errors))
     sys.exit(1)
 
+# The privacy notice must name the person responsible before the site is public (GDPR Art. 13).
+privacy = Path(__file__).with_name("privacy.js").read_text(encoding="utf-8")
+if "'DEIN NAME'" in privacy or "@example.org'" in privacy:
+    print("WARNING: privacy.js still has the placeholder name/e-mail. Fill in CONTACT before publishing.")
+
 levels = Counter(q["level"] for q in questions)
 topics = Counter(q["topic"] for q in questions)
 print(f"OK: {len(questions)} questions (L1: {levels[1]}, L2: {levels[2]}), languages: {', '.join(LANGS)}")

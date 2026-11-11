@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Privacy · WSET</title>
+  <meta name="description" content="Privacy notice for the WSET quiz, library and trainer (EN/DE).">
+  <meta name="theme-color" content="#7b1e3a">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🍷 WSET</h1>
+    <nav class="tabs" aria-label="Sections">
+      <a href="index.html" data-i18n="navQuiz"></a>
+      <a href="library.html" data-i18n="navLibrary"></a>
+      <a href="trainer.html" data-i18n="navTraining"></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button data-lang="en">EN</button>
+      <button data-lang="de">DE</button>
+    </div>
+  </header>
+
+  <main class="privacy">
+    <p id="placeholder-warning" class="error" hidden></p>
+    <h2 data-i18n="title"></h2>
+    <p class="muted" data-i18n="updated"></p>
+    <div id="content"></div>
+
+    <section class="profile-section">
+      <h3 data-i18n="deleteTitle"></h3>
+      <p data-i18n="deleteText"></p>
+      <p id="storage-status" class="muted"></p>
+      <div class="actions">
+        <span></span>
+        <button id="delete-data" class="secondary" type="button" data-i18n="deleteButton"></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span data-shared="disclaimer"></span>
+    <a href="privacy.html" aria-current="page" data-shared="privacyLink"></a>
+  </footer>
+
+  <script src="common.js"></script>
+  <script src="profile.js"></script>
+  <script src="privacy.js"></script>
+</body>
+</html>

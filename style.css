@@ -433,3 +433,16 @@ button.pick-chip.active { background: var(--aroma-primary-soft); border-color: v
   .trainer .structure.build tr { border-bottom: 1px solid var(--border); padding: 2px 0; }
   .picker { max-width: none; }
 }
+
+/* Footer on every page */
+.site-footer {
+  max-width: 720px; margin: -28px auto 40px; padding: 0 16px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px;
+  font-size: 0.8rem; color: var(--muted); text-align: center;
+}
+.site-footer a { color: var(--muted); font-weight: 600; }
+.site-footer a:hover { color: var(--accent); }
+
+/* Privacy page */
+.privacy a { color: var(--accent); font-weight: 600; }
+.privacy .profile-section p { margin: 6px 0; }

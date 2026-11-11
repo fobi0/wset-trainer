@@ -316,6 +316,7 @@ function para(text, cls) {
 
 function render() {
   document.documentElement.lang = state.lang;
+  applyShared(state.lang);
   for (const btn of document.querySelectorAll('.lang button')) {
     btn.classList.toggle('active', btn.dataset.lang === state.lang);
   }

@@ -182,8 +182,8 @@ function tile(item) {
 // Share of correct trainer answers for this grape, as a small ring (only once it has been trained).
 function masteryRing(id) {
   const s = state.trainer.stats[id];
-  if (!s || !s.seen) return null;
-  const pct = Math.round((100 * s.correct) / s.seen);
+  if (!s || !Number.isFinite(s.seen) || !Number.isFinite(s.correct) || s.seen <= 0) return null;
+  const pct = Math.min(100, Math.max(0, Math.round((100 * s.correct) / s.seen)));
   const ring = el('span', { class: 'ring', title: `${t('mastery')}: ${pct} %`, 'aria-label': `${t('mastery')}: ${pct} %` }, `${pct}`);
   ring.style.setProperty('--pct', pct); // via CSSOM: the CSP blocks inline style attributes
   return ring;
@@ -271,7 +271,12 @@ function renderDetail(item) {
 // ---- Routing & wiring ----
 
 function route() {
-  const id = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
+  let id = '';
+  try {
+    id = decodeURIComponent(location.hash.replace(/^#\/?/, ''));
+  } catch {
+    // Malformed links (e.g. a stray '%') fall back to the overview instead of a blank page.
+  }
   const item = id && byId(id);
   $('overview').hidden = !!item;
   $('detail').hidden = !item;
@@ -286,6 +291,7 @@ function route() {
 
 function render() {
   document.documentElement.lang = state.lang;
+  applyShared(state.lang);
   for (const btn of document.querySelectorAll('.lang button')) {
     btn.classList.toggle('active', btn.dataset.lang === state.lang);
   }

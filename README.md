@@ -62,6 +62,23 @@ On iPhone, use Safari: **Share → Add to Home Screen**.
 
 When you're online, the app always loads the latest questions. Offline, it uses the copy from your last visit.
 
+## Privacy notice (fill in before publishing)
+
+`privacy.html` holds the privacy notice (DE/EN), linked from the footer of every page. It covers GitHub Pages server logs,
+the local browser storage and your rights, and has a button to delete the stored data.
+
+**Before publishing, enter your name and a private contact e-mail at the top of `privacy.js`:**
+
+```js
+const CONTACT = {
+  name: 'DEIN NAME',
+  email: 'deine-adresse@example.org',
+};
+```
+
+Until you do, the page shows a warning and `validate.py` prints `WARNING: privacy.js still has the placeholder…`.
+This is a general template, not legal advice.
+
 ## Publish on GitHub Pages
 
 The workflow in `.github/workflows/pages.yml` validates `questions.json` and deploys the site on every push to `main`.
@@ -134,6 +151,7 @@ python3 validate.py
 | `index.html`, `app.js` | The quiz |
 | `library.html`, `library.js`, `library.json` | The grape & wine library |
 | `tools/make_library.py` | Generates `library.json` (source of the library content) |
+| `privacy.html`, `privacy.js` | Privacy notice and "delete stored data" button (fill in `CONTACT`) |
 | `trainer.html`, `trainer.js` | The profile trainer (generated from `library.json`) |
 | `profile.js` | Shared by library and trainer: structure scales, colour-coded meters, trainer progress storage |
 | `common.js`, `style.css` | Shared by all pages: country names, language choice, service worker registration, styles |

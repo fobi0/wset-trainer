@@ -62,7 +62,13 @@ const TRAINER_KEY = 'wset-trainer';
 function loadTrainer() {
   try {
     const data = JSON.parse(localStorage.getItem(TRAINER_KEY) || '{}');
-    return { deck: data.deck || {}, stats: data.stats || {}, counter: data.counter || 0 };
+    // Stored data is user-controlled: keep only plain objects and a finite counter.
+    const obj = v => (v && typeof v === 'object' && !Array.isArray(v) ? v : {});
+    return {
+      deck: obj(data && data.deck),
+      stats: obj(data && data.stats),
+      counter: Number.isFinite(data && data.counter) ? data.counter : 0,
+    };
   } catch {
     return { deck: {}, stats: {}, counter: 0 };
   }
